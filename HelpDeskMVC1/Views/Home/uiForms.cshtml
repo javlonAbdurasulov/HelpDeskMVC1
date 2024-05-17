@@ -1,0 +1,68 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_IndexLayout.cshtml";
+
+}
+
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+         data-sidebar-position="fixed" data-header-position="fixed">
+        
+
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+            <div class="container-fluid">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold mb-4">Forms</h5>
+                            <div class="card">
+                                <div class="card-body">
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="ModelTitle" class="form-label">Title</label>
+                                            <input type="text" class="form-control" id="ModelTitle" >
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="ModelEmail" class="form-label">Email address</label>
+                                            <input type="email" class="form-control" id="ModelEmail" aria-describedby="emailHelp">
+                                            <div id="emailHelp" class="form-text">В случаи заполнения будут отправляться оповещение о статусе заявки!</div>
+                                        </div>
+                                        <div class="mb-3 form-check">
+                                            <input type="checkbox" class="form-check-input" id="ModelFormTexnika">
+                                            <label class="form-check-label" for="ModelFormTexnika">Texnika 1</label><br>
+                                            <input type="checkbox" class="form-check-input" id="ModelFormTexnika">
+                                            <label class="form-check-label" for="ModelFormTexnika">Texnika 2</label><br>
+                                            <input type="checkbox" class="form-check-input" id="ModelFormTexnika">
+                                            <label class="form-check-label" for="ModelFormTexnika">Texnika 3</label><br>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="ModelFormDescription" class="form-label">Comment </label>
+                                            <textarea class="form-control" id="ModelFormDescription" rows="5"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="ModelFormKorpus" class="form-label">Korpus</label>
+                                            <select class="form-select" id="ModelFormKorpus" name="KorpusForm" required>
+                                                <option value="0">A</option>
+                                                <option value="1">B</option>
+                                                <option value="2">C</option>
+                                                <option value="3">D</option>
+                                                <option value="4">E</option>
+                                                <option value="5">F</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="ModelFormKabinet" class="form-label">Kabinet</label>
+                                            <input type="text" class="form-control" id="ModelFormKabinet" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
