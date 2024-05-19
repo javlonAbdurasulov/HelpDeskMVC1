@@ -1,4 +1,6 @@
-﻿@{
+﻿@using HelpDeskMVC1.Models.Enum
+@model User;
+@{
 
     Layout = "~/Views/Shared/_IndexLayout.cshtml";
 
@@ -18,31 +20,35 @@
                             <h5 class="card-title fw-semibold mb-4">Forms</h5>
                             <div class="card">
                                 <div class="card-body">
-                                    <form>
+                                <form asp-controller="Home" asp-action="CreateLetter" method="post">
+                                        
+                                        <div class="mb-3">
+                                            <input type="hidden" value=@Model.Id name="UserId" class="form-control">
+                                        </div>
                                         <div class="mb-3">
                                             <label for="ModelTitle" class="form-label">Title</label>
-                                            <input type="text" class="form-control" id="ModelTitle" >
+                                            <input type="text" name="Title" class="form-control" id="ModelTitle">
                                         </div>
                                         <div class="mb-3">
                                             <label for="ModelEmail" class="form-label">Email address</label>
-                                            <input type="email" class="form-control" id="ModelEmail" aria-describedby="emailHelp">
+                                            <input type="email"  class="form-control" id="ModelEmail" aria-describedby="emailHelp">
                                             <div id="emailHelp" class="form-text">В случаи заполнения будут отправляться оповещение о статусе заявки!</div>
                                         </div>
-                                        <div class="mb-3 form-check">
-                                            <input type="checkbox" class="form-check-input" id="ModelFormTexnika">
-                                            <label class="form-check-label" for="ModelFormTexnika">Texnika 1</label><br>
-                                            <input type="checkbox" class="form-check-input" id="ModelFormTexnika">
-                                            <label class="form-check-label" for="ModelFormTexnika">Texnika 2</label><br>
-                                            <input type="checkbox" class="form-check-input" id="ModelFormTexnika">
-                                            <label class="form-check-label" for="ModelFormTexnika">Texnika 3</label><br>
+                                        <div class="mb-3">
+                                            <label for="ModelFormTexnika" class="form-label">Texnika</label>
+                                            <select class="form-select" name="TexnikaForm" id="ModelFormTexnika" required>
+                                                <option value=0>@Texnika.Proektor</option>
+                                                <option value=1>@Texnika.Printer</option>
+                                                <option value=2>@Texnika.Kompyuter</option>
+                                            </select>
                                         </div>
                                         <div class="mb-3">
                                             <label for="ModelFormDescription" class="form-label">Comment </label>
-                                            <textarea class="form-control" id="ModelFormDescription" rows="5"></textarea>
+                                            <textarea name="DescriptionForm" class="form-control" id="ModelFormDescription" rows="5"></textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label for="ModelFormKorpus" class="form-label">Korpus</label>
-                                            <select class="form-select" id="ModelFormKorpus" name="KorpusForm" required>
+                                            <select name="KorpusForm" class="form-select" id="ModelFormKorpus" required>
                                                 <option value="0">A</option>
                                                 <option value="1">B</option>
                                                 <option value="2">C</option>
@@ -53,7 +59,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="ModelFormKabinet" class="form-label">Kabinet</label>
-                                            <input type="text" class="form-control" id="ModelFormKabinet" required>
+                                            <input type="text" name="KabinetForm" class="form-control" id="ModelFormKabinet" required>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>

@@ -12,10 +12,16 @@
                     <div class="card mb-0">
                         <div class="card-body">
                             <a href="#!" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                <img src="~/dark-logo.svg" width="180" alt="">
+                                <img src="~/favicon.png" width="180" alt="">
                             </a>
                             <p class="text-center">Your Social Campaigns</p>
-                            <form>
+                            <form asp-action="Index" asp-controller="Home" method="post">
+                                <div class="mb-3">
+                                    <input type="hidden" value="user" name="Roles" class="form-control" >
+                                </div>
+                                <div class="mb-3">
+                                    <input type="hidden" value=1 name="Id" class="form-control">
+                                </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Username</label>
                                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -24,7 +30,8 @@
                                     <label for="exampleInputPassword1" class="form-label">Password</label>
                                     <input type="password" class="form-control" id="exampleInputPassword1">
                                 </div>
-                                <a class="btn btn-primary w-100 fs-4 mb-4 rounded-2" asp-action="Index" asp-controller="Home">Sign In</a>
+                                @* <a class="btn btn-primary w-100 fs-4 mb-4 rounded-2" asp-action="Index" asp-controller="Home">Sign In</a>*@
+                                <button type="submit" class="btn btn-primary" w-100 fs-4 mb-4 rounded-2>Sign In</button>
                                 
                             </form>
                         </div>

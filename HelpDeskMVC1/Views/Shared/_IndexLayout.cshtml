@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model User;
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -16,8 +17,8 @@
 
             <div class="scroll-sidebar" data-simplebar>
                 <div class="d-flex mb-4 align-items-center justify-content-between">
-                    <a asp-action="Index" asp-controller="Home" class="text-nowrap logo-img ms-0 ms-md-1">
-                        <img src="~/dark-logo.svg" width="180" alt="">
+                    <a href="#!" class="text-nowrap logo-img ms-0 ms-md-1">
+                        <img src="~/favicon.png" width="180" alt="">
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -34,7 +35,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link sidebar-link primary-hover-bg"
                                asp-action="Index" asp-controller="Home"
-                               aria-expanded="false">
+                               asp-route-Id=@Model.Id asp-route-Roles="@Model.Roles">
                                 <span class="aside-icon p-2 bg-light-primary rounded-3">
                                     <i class="ti ti-layout-dashboard fs-7 text-primary"></i>
                                 </span>
@@ -45,112 +46,114 @@
                             <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
                             <span class="hide-menu">UI Componenst</span>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link warning-hover-bg"
-                               asp-action="uiButtons" asp-controller="Home"
-                               aria-expanded="false">
-                                <span class="aside-icon p-2 bg-light-warning rounded-3">
-                                    <i class="ti ti-article fs-7 text-warning"></i>
-                                </span>
-                                <span class="hide-menu ms-2 ps-1">Buttons</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link danger-hover-bg"
-                               href="./ui-alerts.html"
-                               aria-expanded="false">
-                                <span class="aside-icon p-2 bg-light-danger rounded-3">
-                                    <i class="ti ti-alert-circle fs-7 text-danger"></i>
-                                </span>
-                                <span class="hide-menu ms-2 ps-1">Alerts</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link success-hover-bg"
-                               href="./ui-card.html"
-                               aria-expanded="false">
-                                <span class="aside-icon p-2 bg-light-success rounded-3">
-                                    <i class="ti ti-cards fs-7 text-success"></i>
-                                </span>
-                                <span class="hide-menu ms-2 ps-1">Card</span>
-                            </a>
-                        </li>
+                        @if(Model.Roles=="admin"){
+                            
+                            <li class="sidebar-item">
+                                <a class="sidebar-link sidebar-link warning-hover-bg"
+                                   asp-action="uiButtons" asp-controller="Home"
+                                   asp-route-Id=@Model.Id asp-route-Roles="@Model.Roles"
+                                   aria-expanded="false">
+                                    <span class="aside-icon p-2 bg-light-warning rounded-3">
+                                        <i class="ti ti-article fs-7 text-warning"></i>
+                                    </span>
+                                    <span class="hide-menu ms-2 ps-1">Buttons</span>
+                                </a>
+                            </li>
+                        
+                            <li class="sidebar-item">
+                                <a class="sidebar-link sidebar-link danger-hover-bg"
+                                   @* asp-action="uiButtons" asp-controller="Home"
+                                    asp-route-Id=@Model.Id asp-route-Roles="@Model.Roles" *@
+                                aria-expanded="false">
+                                    <span class="aside-icon p-2 bg-light-danger rounded-3">
+                                        <i class="ti ti-alert-circle fs-7 text-danger"></i>
+                                    </span>
+                                    <span class="hide-menu ms-2 ps-1">Alerts</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link sidebar-link success-hover-bg"
+                                @* asp-action="uiButtons" asp-controller="Home"
+                               asp-route-Id=@Model.Id asp-route-Roles="@Model.Roles" *@
+                                   aria-expanded="false">
+                                    <span class="aside-icon p-2 bg-light-success rounded-3">
+                                        <i class="ti ti-cards fs-7 text-success"></i>
+                                    </span>
+                                    <span class="hide-menu ms-2 ps-1">Card</span>
+                                </a>
+                            </li>
+                        }
                         <li class="sidebar-item">
                             <a class="sidebar-link sidebar-link primary-hover-bg"
                                asp-action="uiForms" asp-controller="Home"
-                               aria-expanded="false">
+                               asp-route-Id=@Model.Id asp-route-Roles="@Model.Roles">
                                 <span class="aside-icon p-2 bg-light-primary rounded-3">
                                     <i class="ti ti-file-description fs-7 text-primary"></i>
                                 </span>
                                 <span class="hide-menu ms-2 ps-1">Forms</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link indigo-hover-bg"
-                               href="./ui-typography.html"
-                               aria-expanded="false">
-                                <span class="aside-icon p-2 bg-light-indigo rounded-3">
-                                    <i class="ti ti-typography fs-7 text-indigo"></i>
-                                </span>
-                                <span class="hide-menu ms-2 ps-1">Typography</span>
-                            </a>
-                        </li>
                         <li class="nav-small-cap">
-                            <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
-                            <span class="hide-menu">Auth</span>
-                        </li>
+                                <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
+                                <span class="hide-menu">Auth</span>
+                            </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link sidebar-link warning-hover-bg"
-                               href="./authentication-login.html"
+                               asp-action="authenticationLogin" asp-controller="Home"
                                aria-expanded="false">
                                 <span class="aside-icon p-2 bg-light-warning rounded-3">
                                     <i class="ti ti-login fs-7 text-warning"></i>
                                 </span>
-                                <span class="hide-menu ms-2 ps-1">Login</span>
+                                <span class="hide-menu ms-2 ps-1">Log Out</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link danger-hover-bg"
-                               href="./authentication-register.html"
-                               aria-expanded="false">
-                                <span class="aside-icon p-2 bg-light-danger rounded-3">
-                                    <i class="ti ti-user-plus fs-7 text-danger"></i>
-                                </span>
-                                <span class="hide-menu ms-2 ps-1">Register</span>
-                            </a>
-                        </li>
-
+                        @if (Model.Roles == "admin")
+                        {
+                            <li class="sidebar-item">
+                                <a class="sidebar-link sidebar-link danger-hover-bg"
+                                @* asp-action="uiButtons" asp-controller="Home"
+                               asp-route-Id=@Model.Id asp-route-Roles="@Model.Roles" *@
+                                aria-expanded="false">
+                                    <span class="aside-icon p-2 bg-light-danger rounded-3">
+                                        <i class="ti ti-user-plus fs-7 text-danger"></i>
+                                    </span>
+                                    <span class="hide-menu ms-2 ps-1">Register</span>
+                                </a>
+                            </li>
+                        }
                     </ul>
-                    <div class="pb-3 options text-nowrap">
-                        <div class="nav-small-cap">
-                            <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
-                            <span class="hide-menu">More options</span>
+                    @if (Model.Roles == "admin")
+                    {
+                        <div class="pb-3 options text-nowrap">
+                            <div class="nav-small-cap">
+                                <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
+                                <span class="hide-menu">More options</span>
+                            </div>
+
+                            <ul class="sidebar-list">
+                                <li class="sidebar-list-item">
+                                    <i class="ti ti-circle text-primary fs-4"></i>
+                                    <span class="hide-menu ms-2">Applications</span>
+                                </li>
+                                <li class="sidebar-list-item">
+                                    <i class="ti ti-circle text-danger fs-4"></i>
+                                    <span class="hide-menu ms-2">Form Options</span>
+                                </li>
+                                <li class="sidebar-list-item">
+                                    <i class="ti ti-circle text-warning fs-4"></i>
+                                    <span class="hide-menu ms-2">Table Variations</span>
+                                </li>
+                                <li class="sidebar-list-item">
+                                    <i class="ti ti-circle text-success fs-4"></i>
+                                    <span class="hide-menu ms-2">Charts Selection</span>
+                                </li>
+                                <li class="sidebar-list-item">
+                                    <i class="ti ti-circle text-indigo fs-4"></i>
+                                    <span class="hide-menu ms-2">Widgets</span>
+                                </li>
+                            </ul>
                         </div>
-
-                        <ul class="sidebar-list">
-                            <li class="sidebar-list-item">
-                                <i class="ti ti-circle text-primary fs-4"></i>
-                                <span class="hide-menu ms-2">Applications</span>
-                            </li>
-                            <li class="sidebar-list-item">
-                                <i class="ti ti-circle text-danger fs-4"></i>
-                                <span class="hide-menu ms-2">Form Options</span>
-                            </li>
-                            <li class="sidebar-list-item">
-                                <i class="ti ti-circle text-warning fs-4"></i>
-                                <span class="hide-menu ms-2">Table Variations</span>
-                            </li>
-                            <li class="sidebar-list-item">
-                                <i class="ti ti-circle text-success fs-4"></i>
-                                <span class="hide-menu ms-2">Charts Selection</span>
-                            </li>
-                            <li class="sidebar-list-item">
-                                <i class="ti ti-circle text-indigo fs-4"></i>
-                                <span class="hide-menu ms-2">Widgets</span>
-                            </li>
-                        </ul>
-                    </div>
-
+                    }
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
